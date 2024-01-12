@@ -1,0 +1,125 @@
+site_name: PERFECT HOMELAB
+site_url: https://allfab.github.io/perfect-homelab/
+repo_url: https://github.com/allfab/perfect-homelab.git
+repo_name: allfab/perfect-homelab
+#edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: fr
+  favicon: assets/images/favicon.png
+  logo: assets/images/favicon.png
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Passer en mode sombre
+    # Palette toggle for dark mode
+    - scheme: slate
+      accent: green
+      primary: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Passer en mode clair
+  font:
+    code: Mooli
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.sections # prevents collapsible sections
+    - navigation.indexes # section index pages
+    - navigation.expand #expands sections by default
+    #- navigation.tabs # section tabs along the top
+    - navigation.top
+    - toc.follow
+    - toc.integrate # moves toc to the left
+    #- content.action.edit
+    #- content.action.view
+    - content.code.annotate
+    - content.code.copy
+    # - content.code.select
+    - content.tabs.link
+    - content.tooltips
+
+markdown_extensions: 
+  - admonition # enables coloured blocks mid article
+  - attr_list # improves image handling
+  - md_in_html # grids (insiders)
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - footnotes
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+
+plugins:
+  - search
+  - glightbox
+  - open-in-new-tab
+  - mermaid2
+
+extra_css:
+  - extra/stylesheets/extra.css
+  #- extra/stylesheets/mermaid-base.css
+
+nav:
+  - 1. Introduction:
+    - Bienvenue sur PERFECT HOMELAB: "index.md"
+  - 2. Pile technologique:
+    - Matériel: "tech-stack/hardware.md"
+  - 3. Installation:
+    - "installation/index.md"
+    - Hyperviseur:
+      - Proxmox: "installation/hypervisor/proxmox.md"
+      - Post-installation: 
+        - Système:
+          - Utilisateur: "installation/post-install/system/users.md"
+          - SSH: "installation/post-install/system/ssh.md"          
+          - MOTD: "installation/post-install/system/motd.md"
+        - Données et stockage:
+          - mergerfs: "installation/post-install/data-storage/mergerfs.md"
+          - SnapRAID: "installation/post-install/data-storage/snapraid.md"
+          - NFS/Samba: "installation/post-install/data-storage/nfs-samba.md"
+  - 4. VMs/Conteneurs:
+    - VMs: "vm-container/vm.md"
+    - LXC: "vm-container/lxc.md"
+    - Docker: "vm-container/docker.md"
+  - 99. Wiki:
+    - Linux: 
+      - "wiki/linux/index.md"
+      - 01.Généralités système: "wiki/linux/system.md"
+      - 02.Console: "wiki/linux/console.md"
+    - Docker:
+      - "wiki/docker/index.md"
+    - GIT:
+      - "wiki/git/index.md"
+
+extra:
+  social:
+    - icon: 'fontawesome/brands/mastodon'
+      link: 'https://mapstodon.space/@allfab'
+      name: Allfab sur Mastodon
+      
+copyright: 2023 &copy; Allfab Studio - Licensed under GPLv3
