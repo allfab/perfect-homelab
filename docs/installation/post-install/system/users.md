@@ -44,4 +44,4 @@ Assignons maintenant un mot de passe à cet utilisateur :
 passwd <username>
 ```
 
-Tapez le mot de passe 2 fois.
+Tapez le mot de passe 2 fois et valider.
