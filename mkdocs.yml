@@ -90,22 +90,23 @@ nav:
   - 2. Pile technologique:
     - Matériel: "tech-stack/hardware.md"
   - 3. Installation:
-    - "installation/index.md"
-    - Hyperviseur:
-      - Proxmox: "installation/hypervisor/proxmox.md"
-      - Post-installation: 
-        - Système:
-          - Utilisateur: "installation/post-install/system/users.md"
-          - SSH: "installation/post-install/system/ssh.md"          
-          - MOTD: "installation/post-install/system/motd.md"
-        - Données et stockage:
-          - mergerfs: "installation/post-install/data-storage/mergerfs.md"
-          - SnapRAID: "installation/post-install/data-storage/snapraid.md"
-          - NFS/Samba: "installation/post-install/data-storage/nfs-samba.md"
-  - 4. VMs/Conteneurs:
-    - VMs: "vm-container/vm.md"
-    - LXC: "vm-container/lxc.md"
-    - Docker: "vm-container/docker.md"
+    - Proxmox VE: "installation/proxmox.md"
+  - 4. Post-installation:
+      - "post-install/index.md"
+      - Proxmox: 
+        - Configuration PVE: "post-install/proxmox/conf.md"          
+      - Système:
+        - Utilisateur: "post-install/system/users.md"
+        - SSH: "post-install/system/ssh.md"          
+        - MOTD: "post-install/system/motd.md"
+      - Données et stockage:
+        - mergerfs: "post-install/data-storage/mergerfs.md"
+        - SnapRAID: "post-install/data-storage/snapraid.md"
+        - NFS/Samba: "post-install/data-storage/nfs-samba.md"
+  - 5. VMs/Conteneurs:
+    - VMs: "services/vm.md"
+    - LXC: "services/lxc.md"
+    - Docker: "services/docker.md"
   - 99. Wiki:
     - Linux: 
       - "wiki/linux/index.md"
