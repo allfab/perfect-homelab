@@ -13,6 +13,25 @@ En me documentant sur mon projet et comment j'allais arriver à mes fins et cons
 
 Toutes les technologies utilisées dans le processus de création de son NAS me conviennent et c'est comme ça que je me suis retrouvé à écrire ma documentation pour ma propre machine.
 
+!!! question "Note"
+
+    À force de lire les nombreux tutos qui documentent le sujet et de voir les innombrables vidéos sous Youtube de mise en place de Homelab avec des partis pris technologiques forts, j'en suis arrivé à ne plus savoir comment allait être structurer le NAS que je voulais mette en place :
+
+    - Quel système d'exploitation installé ?
+    - Qu'est-ce qui va être virtualisé ou non ?
+    - Quelles sont les briques logicielles qui vont fonctionner en **baremetal** (***directement sur l'hôte et donc sur Proxmox et donc sur Debian Bookworm***) ?
+    - Quelles sont les briques logicielles qui vont être propulsées via **Docker** ?
+    - D'ailleurs, comment installe-t-on **Docker** ? Sur une **VM**, un container **LXC** ?
+
+    Ce sont toutes des questions légitimes sur lesquelles je me suis penché assez longtemps pour trouver la meilleure granularité du système et suivant mes compétences (je ne suis pas sysadmin ou devops !) :
+
+    - Pour la mise à jour système,
+    - Pour l'upgrade matériel,
+    - Pour l'évolutivité des services proposés.
+
+    Vous retrouverez donc mes choix technologiques ci-dessous
+
+
 On va donc retrouver sous le capot :
 
 - **Proxmox Virtual Environment** : ***Installation en baremetal*** - [Proxmox Virtual Environment](https://www.proxmox.com/en/proxmox-virtual-environment/overview) est une plate-forme complète de gestion de serveurs open source pour la virtualisation d'entreprise. Il intègre étroitement l'hyperviseur KVM et les conteneurs Linux (LXC), la fonctionnalité de stockage et de réseau définie par logiciel, sur une plate-forme unique. Avec une interface utilisateur basée sur le web, vous pouvez gérer les machines virtuelles et les conteneurs, la haute disponibilité pour les clusters ou les outils de reprise après sinistre intégrés avec facilité. **Par conséquent, il y a une énorme marge de manœuvre pour l'évolutivité du serveur.**
@@ -30,6 +49,7 @@ On va donc retrouver sous le capot :
 - **Sauvegarde** : [SnapRAID](http://www.snapraid.it/) pour la parité des données,
 - **Partage** : NFS
 - **Services** : VMs et/ou containers LXC + containers Docker.
+
 
 <div class="grid cards" markdown>
 
