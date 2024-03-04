@@ -15,7 +15,7 @@ icon: simple/proxmox
 - Désactiver le stockage par défaut `local (/var/lib/vz)` qui se trouve sur notre volume logique `pve-root`:
 	- Pourquoi ? Ce stockage est un stockage de type `Directory` dans le répertoire `/var/lib/vz` qui se trouve sur le volume logique `pve-root` de notre serveur, c'est-à-dire sur la partition système de notre serveur. Avec la montée en charge de ce dernier, cet espace de stockage va se remplir d'images ISO, de modèles de container LXC ou encore d'image disque de nos VMs/CTs et occuper tout l'espace disque dédié au système d'exploitation. **Ce que l'on ne veut pas qu'il arrive !**
 
-## **:material-list-box: Procédure d'installation**
+## **:material-list-box: Procédure d'installation basique**
 
 - Booter sur Ventoy en ayant préalablement télécharger et copier [l'image ISO de Proxmox Virtual Environment](https://enterprise.proxmox.com/iso/proxmox-ve_8.1-2.iso),
 - Installation de Proxmox :

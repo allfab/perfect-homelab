@@ -86,7 +86,8 @@ extra_css:
 
 nav:
   - 1. Introduction:
-    - Bienvenue sur PERFECT HOMELAB: "index.md"
+    - "index.md"
+    - L'envers du décors: "overview.md"
   - 2. Pile technologique:
     - Matériel: "tech-stack/hardware.md"
   - 3. Installation:
@@ -104,6 +105,7 @@ nav:
         - SnapRAID: "post-install/data-storage/snapraid.md"
         - NFS/Samba: "post-install/data-storage/nfs-samba.md"
   - 5. VMs/Conteneurs:
+    - "services/index.md"
     - VMs: "services/vm.md"
     - LXC: "services/lxc.md"
     - Docker: "services/docker.md"

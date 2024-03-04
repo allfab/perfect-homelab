@@ -19,7 +19,7 @@ icon: material/harddisk
     | Carte-mère   | [ASRock H670M-ITX/ax](https://www.asrock.com/mb/Intel/H670M-ITXax/index.asp)           | 4 SATA3 - 1 Hyper M.2 (PCIe Gen4 x4) - 1 Hyper M.2 (PCIe Gen4 x4 & SATA3)                      |
     | CPU          | [Intel Core i3-13100 (3.4 GHz / 4.5 GHz) ](https://www.ldlc.com/fiche/PB00536091.html) | iGPU avec transcodage Quicksync intégré                                                        |
     | Mémoire      | [Crucial Pro 64GB Kit (2x32GB) DDR4-3200 - Non ECC](https://www.crucial.fr/memory/DDR4/CP2K32G4DFRA32A)| Suffisant pour exécuter l’intégralité de ma pile de production                 |
-    | SSD boot     | [Crucial P5 Plus 1To NVMe SSD](https://amzn.eu/d/8PFIjH0)                              | Disque SSD système                                                                             |
+    | SSD boot     | [2 * Crucial P5 Plus 1To NVMe SSD](https://amzn.eu/d/8PFIjH0)                              | Disque SSD système                                                                             |
     | Alimentation | [Be Quiet SYSTEM POWER 9 400W](https://www.bequiet.com/fr/powersupply/1281)            |                                                                                                |
     | Disques dur  | Un mélange de disques de 1 à 18 To                                                     |                                                                                                |
 
@@ -35,12 +35,7 @@ icon: material/harddisk
 
     | Conteneur                                        | Usage                                    | Lien de contenu pertinent                                         |
     | ------------------------------------------------ | ------------------------------------------ | ---------------------------------------------------------------- |
-    | [Traefik](https://traefik.io/)                   | Reverse proxy                              | [Traefik 101 Guide](../04-day-two/remote-access/traefik101.md)              |
-    | [Jellyfin](https://jellyfin.org/)                | Media server - replacing Plex              | [Top 10 Apps - Jellyfin](../04-day-two/top10apps.md#1-jellyfin)             |
-    | [Nextcloud](https://nextcloud.com/)              | An awesome self-hosted dropbox alternative | [Top 10 Apps - Nextcloud](../04-day-two/top10apps.md#2-nextcloud)        |
-    | [Immich](https://github.com/immich-app/immich)   | Self-hosted photo and video backup         | - tbd -   |
-    | [FreshRSS](https://freshrss.org/index.html)      | Self-hosted RSS and Atom feed aggregator   | - tbd -   |
-    | [Wallabag](https://wallabag.org/)                | Save and classify articles. Read them later.   | - tbd -   |
+    | [Traefik](https://traefik.io/)                   | Reverse proxy                              |             |
 
 
 === "Avant"
@@ -66,10 +61,5 @@ icon: material/harddisk
 
     | Conteneur                                        | Usage                                    | Lien de contenu pertinent                                         |
     | ------------------------------------------------ | ------------------------------------------ | ---------------------------------------------------------------- |
-    | [Traefik](https://traefik.io/)                   | Reverse proxy                              | [Traefik 101 Guide](../04-day-two/remote-access/traefik101.md)              |
-    | [Jellyfin](https://jellyfin.org/)                | Media server - replacing Plex              | [Top 10 Apps - Jellyfin](../04-day-two/top10apps.md#1-jellyfin)             |
-    | [Nextcloud](https://nextcloud.com/)              | An awesome self-hosted dropbox alternative | [Top 10 Apps - Nextcloud](../04-day-two/top10apps.md#2-nextcloud)        |
-    | [Immich](https://github.com/immich-app/immich)   | Self-hosted photo and video backup         | - tbd -   |
-    | [FreshRSS](https://freshrss.org/index.html)      | Self-hosted RSS and Atom feed aggregator   | - tbd -   |
-    | [Wallabag](https://wallabag.org/)                | Save and classify articles. Read them later.   | - tbd -   |
+    | [Swag](https://docs.linuxserver.io/general/swag/)| Reverse proxy                              |           |
     
