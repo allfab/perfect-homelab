@@ -1,5 +1,5 @@
 ---
-title: Logiciels & outils
+title: Matériel
 icon: material/harddisk
 ---
 

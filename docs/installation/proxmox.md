@@ -7,7 +7,8 @@ icon: simple/proxmox
 
 ![proxmox](../../assets/images/logo/proxmox.svg)
 
-## **:fontawesome-solid-hard-drive: Basique avec EXT4 & LVM**
+
+## **Basique avec options LVM**
 
 ### **:material-lightbulb: Objectif**
 
@@ -95,7 +96,7 @@ icon: simple/proxmox
 </figure>
 
 
-## **:simple-openzfs: En mirroir avec ZFS & RAID1**
+## **En mirroir avec ZFS & RAID1**
 
 ### **:material-lightbulb: Objectif**
 

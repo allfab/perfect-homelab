@@ -90,6 +90,7 @@ nav:
     - L'envers du décors: "overview.md"
   - 2. Pile technologique:
     - Matériel: "tech-stack/hardware.md"
+    - Méthodologie: "tech-stack/processus.md"
   - 3. Installation:
     - Proxmox VE: "installation/proxmox.md"
   - 4. Post-installation:
