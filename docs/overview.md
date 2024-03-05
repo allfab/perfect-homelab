@@ -57,7 +57,7 @@ On va donc retrouver sous le capot :
 
     [MergerFS](https://github.com/trapexit/mergerfs) est un système de fichiers d'union très puissant. Il sera utilisé dans ce projet pour **« fusionner »** les disques ensemble pour créer un point de montage unifié de stockage. À noter que [MergerFS](https://github.com/trapexit/mergerfs) utilise des politiques de stockage pour définir comment les données sont copiées/hiérarchisées sur les différents disques qui composent le pool unifié, et ce sont ces politiques qui permettent la configuration que j'essaie d'atteindre. À savoir qu'une [politique](https://github.com/trapexit/mergerfs?tab=readme-ov-file#policies) est l'algorithme utilisé pour choisir une ou plusieurs branches (comprendre disques) sur lesquelles une fonction doit travailler ou, de manière générale, comment la fonction se comporte.
     
-    Il en existe [une bonne liste](https://github.com/trapexit/mergerfs?tab=readme-ov-file#policies) mais je m'attarderais sur 2 qui ont retenu mon attention, `lfs` et `epmfs` :
+    Il en existe [une bonne liste](https://github.com/trapexit/mergerfs?tab=readme-ov-file#policies) mais je m'attarderais sur deux qui ont retenu mon attention, `lfs` et `epmfs` :
     
     - `lfs` pour `Least Free Space` - ***choix de la branche avec le moins d’espace libre disponible*** : vise à équilibrer l'espace libre sur tous les disques. MergerFS écrit toujours de nouvelles données sur le disque avec l'espace le moins libre disponible.
 
@@ -71,7 +71,7 @@ On va donc retrouver sous le capot :
         - un cauchemare dans l'organisation des fichiers : l'étalement des fichiers connexes est lourd pour travailler sur les données qui devraient être ensemble,
         - Si on perd un lecteur et de la parité, il est plus facile de récupérer une petite partie de données similaires, contre des milliers de fichiers aléatoires.
 
-    - `epmfs` pour `Existing Path, Most Free Space` - ***parmi toutes les branches sur lesquelles le chemin relatif existe, choisissez la branche avec le plus d'espace libre*** : priorité au répertoire existant, si un répertoire existe déjà sur l'un des disques, de nouveaux fichiers destinés à ce répertoire y seront placés. Cela garantit que les fichiers connexes, comme les épisodes de la même saison télévisée, restent ensemble sur le même disque tant qu'il y a de l'espace.
+    - `epmfs` pour `Existing Path, Most Free Space` - ***parmi toutes les branches sur lesquelles le chemin relatif existe, choisissez la branche avec le plus d'espace libre*** : il faut comprendre ***priorité au répertoire existant***, si un répertoire existe déjà sur l'un des disques, de nouveaux fichiers destinés à ce répertoire y seront placés. Cela garantit que les fichiers connexes, comme les épisodes de la même saison télévisée, restent ensemble sur le même disque tant qu'il y a de l'espace.
 
     !!! abstract "Note"
 
