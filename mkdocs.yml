@@ -95,9 +95,8 @@ nav:
     - Proxmox VE: "installation/proxmox.md"
   - 4. Post-installation:
       - "post-install/index.md"
-      - Proxmox: 
-        - Configuration PVE: "post-install/proxmox/conf.md"          
       - Système:
+        - Proxmox: "post-install/system/proxmox.md"
         - Utilisateur: "post-install/system/users.md"
         - SSH: "post-install/system/ssh.md"          
         - MOTD: "post-install/system/motd.md"

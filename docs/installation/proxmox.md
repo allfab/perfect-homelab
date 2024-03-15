@@ -124,11 +124,6 @@ Coming soon
 </figure>
 
 <figure markdown="span">
-  ![proxmox-zfs-disks-options-raid1-01](../../assets/images/proxmox/installation/zfs-mirror-raid1/proxmox-zfs-disks-options-raid1-01.png){ width="600" }
-  <figcaption>Options avancées de configuration ZFS<br />Choisir <b>zfs (RAID1)</b> pour une installation en mirroir avec 2 disques</figcaption>
-</figure>
-
-<figure markdown="span">
   ![proxmox-zfs-disks-options-raid1-02](../../assets/images/proxmox/installation/zfs-mirror-raid1/proxmox-zfs-disks-options-raid1-02.png){ width="600" }
   <figcaption>Dans l'onglet <b>Disk Setup</b>, mapper les 2 disques qui vont nous servir pour l'installation de Proxmox. Ici, <b>/dev/sda et /dev/sdb</b></figcaption>
 </figure>
