@@ -224,3 +224,83 @@ proc /proc proc defaults 0 0
   ![proxmox-storage-iso-directory](../../assets/images/proxmox/post-install/proxmox-storage-iso-directory.gif){ width="800" }
   <figcaption>Configuration du stockage des ISO sur la clé USB</figcaption>
 </figure>
+
+
+## **:simple-postgresql: PostgreSQL sur un dataset ZFS**
+
+Ma réflexion ici est de profiter du pool ZFS en mirroir `rpool` créé à [l'installation de Proxmox](/installation/proxmox/#en-mirroir-avec-zfs-raid1) dans le but d'y stocker les données du cluster PotsgreSQL et de profiter des `snapshots` de ZFS. De plus, on profitera aussi des performances des disques NVMe en mirroir sur lequel est créé le pool `rpool`.
+
+Pour cela, je vais créer un container LCX qui va faire tourner PostgreSQL et utiliser les options de point de montage des containers LXC pour mapper un dataset ZFS que je vais créer en amont et le mapper sur `/var/lib/postgresql` de mon container.
+
+On n'oubliera pas de créer un petit script de sauvegarde des données via `pg_dump` ou autre afin de pouvoir remonter une base en cas de soucis, mais dans un premier temps, on pourra tirer profit de la gestion de rollback des snapshots ZFS.
+
+Référence : [https://lackofimagination.org/2022/04/our-experience-with-postgresql-on-zfs/](https://lackofimagination.org/2022/04/our-experience-with-postgresql-on-zfs/)
+
+- Visualisation du pool ZFS :
+``` shell
+root@homelab:~# zpool status
+  pool: rpool
+ state: ONLINE
+  scan: scrub repaired 0B in 00:00:34 with 0 errors on Fri Mar 15 14:31:08 2024
+config:
+
+        NAME                                             STATE     READ WRITE CKSUM
+        rpool                                            ONLINE       0     0     0
+          mirror-0                                       ONLINE       0     0     0
+            ata-VBOX_HARDDISK_VB4d776a0a-b24c3eb0-part3  ONLINE       0     0     0
+            ata-VBOX_HARDDISK_VB4fd111ed-7ccb2978-part3  ONLINE       0     0     0
+
+errors: No known data errors
+
+root@homelab:~# zfs list
+NAME               USED  AVAIL  REFER  MOUNTPOINT
+rpool             1.70G   983G   104K  /rpool
+rpool/ROOT        1.70G   983G    96K  /rpool/ROOT
+rpool/ROOT/pve-1  1.70G   983G  1.70G  /
+rpool/data          96K   983G    96K  /rpool/data
+rpool/var-lib-vz    96K   983G    96K  /var/lib/vz
+```
+
+- Création de l'ensemble de données (dataset) sur le pool ZFS `rpool` :
+``` shell
+root@homelab:~# zfs create rpool/pgdata -o mountpoint=/var/lib/postgresql
+root@homelab:~# zfs list
+NAME               USED  AVAIL  REFER  MOUNTPOINT
+rpool             1.70G   983G   104K  /rpool
+rpool/ROOT        1.70G   983G    96K  /rpool/ROOT
+rpool/ROOT/pve-1  1.70G   983G  1.70G  /
+rpool/data          96K   983G    96K  /rpool/data
+rpool/pgdata        96K   983G    96K  /var/lib/postgresql
+rpool/var-lib-vz    96K   983G    96K  /var/lib/vz
+```
+
+- Options du pool ZFS `rpool/pgdata` :
+``` shell
+# On active la compression
+root@homelab:~# zfs set compression=lz4 rpool/pgdata
+ 
+# On désactive le temps d'accès (trop d'écritures...)
+root@homelab:~# zfs set atime=off rpool/pgdata
+ 
+# On active les attributs étendus améliorés
+root@homelab:~# zfs set xattr=sa rpool/pgdata
+ 
+# On définit la taille de l'enregistrement ZFS sur 32 Ko (par défaut : 128 Ko)
+root@homelab:~#  zfs set recordsize=128k rpool/pgdata
+# Je laisse la valeur par défaut de 128 Ko et voir comment ça se passe. 
+# Les nombres inférieurs sont potentiellement plus rapides, mais les nombres plus élevés
+# ont tendance à obtenir une meilleure compression.
+``` 
+
+- Configuration système :
+``` shell
+# On notifie à Linux de ne pas utiliser le swap sauf en cas d'absolue nécessité
+root@homelab:~#  sysctl -w vm.swappiness=1          
+# Ajoutez 'vm.swappiness=1' à systctl.conf pour un effet permanent                                
+root@homelab:~#  echo 'vm.swappiness=1' | tee -a /etc/sysctl.conf                    
+```
+
+- Gestion des droits entre l'host Proxmox et le container LXC sur lequel les données vont être montées :
+``` shell
+root@homelab:~#  chown -Rf 10000:10000 /var/lib/postgresql             
+```
