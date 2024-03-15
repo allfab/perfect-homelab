@@ -72,6 +72,7 @@ $ vi /etc/apt/sources.list.d/ceph.list
 
 ### :material-television-guide: Via l'interface graphique
 
+On sélectionne la ligne correspondant au stockage que l'on veut désactiver, on clique sur `Edit` et on décoche `Enable` et on valide.
 
 ### :material-console: En ligne de commande
 
@@ -84,6 +85,8 @@ Pour activer le stockage `local` sur `/var/lib/vz` :
 ``` shell
 $ pvesm set local --disable 0
 ```
+
+Référence : [https://pve.proxmox.com/wiki/Storage#_using_the_command_line_interface](https://pve.proxmox.com/wiki/Storage#_using_the_command_line_interface)
 
 ## **:material-source-repository: Partitionner le reste de l'espace disque restant afin de créer le stockage LVM-Thin**
 
