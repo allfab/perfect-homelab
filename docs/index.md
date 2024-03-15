@@ -35,8 +35,7 @@ Souvent comparé aux services de stockage similaires comme Dropbox, Drive, etc, 
 </figure>
 
 
-!!! note "OBJECTIF"
-    Installer et configurer l'ensemble des briques matériels et logicielles open source qui feront tourner notre NAS
+
 
 ## **:material-lightbulb-on: Prérequis**
 

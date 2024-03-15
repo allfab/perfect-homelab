@@ -94,7 +94,7 @@ Coming soon
 
 ## **:material-usb-flash-drive: Stocker les images iso des VMS/CTs**
 
-Afin de ne pas surcharger les espaces de stockage de Proxmox, j'ai opté pour la mise en place d'un stockage sur clé USB pour stocker les iamges ISOs des VMs ou encore mes templates de mes containers LXC.
+Afin de ne pas surcharger les espaces de stockage de Proxmox, j'ai opté pour la mise en place d'un stockage sur clé USB pour stocker les images ISOs des VMs ou encore mes templates de les containers LXC.
 
 A cette fin, il faut brancher uné clé USB sur la machine. Moi, j'ai opté pour uné clé USB 3.2 [SanDisk Ultra Fit de 128GO](https://www.westerndigital.com/fr-fr/products/usb-flash-drives/sandisk-ultra-fit-usb-3-1?sku=SDCZ430-128G-G46) que j'ai branché au ***cul*** de mon serveur. Ce ne sont pas des données très sensibles, si ma clé venait à rendre l'âme, ce sont des données facilement remplaçables.
 
@@ -217,3 +217,10 @@ proc /proc proc defaults 0 0
 ```
 
 - On redémarre pour vérifier que la configuration est bien effective !
+
+- Si la clé est bien montée au redémarrage, on peut passer à la configuration du stockage sur Proxmox :
+
+<figure markdown="span">
+  ![proxmox-storage-iso-directory](../../assets/images/proxmox/post-install/proxmox-storage-iso-directory.gif){ width="800" }
+  <figcaption>Configuration du stockage des ISO sur la clé USB</figcaption>
+</figure>
