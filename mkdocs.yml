@@ -100,6 +100,7 @@ nav:
         - Utilisateur: "post-install/system/users.md"
         - SSH: "post-install/system/ssh.md"          
         - MOTD: "post-install/system/motd.md"
+        - Utilitaires: "post-install/system/packages.md"
       - Données et stockage:
         - mergerfs: "post-install/data-storage/mergerfs.md"
         - SnapRAID: "post-install/data-storage/snapraid.md"

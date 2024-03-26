@@ -23,7 +23,7 @@ title: POST-INSTALLATION - Proxmox Virtual Environment
    
     ---
 
-    - [Installer les paquets indispensables à la vie du serveur](#)
+    - [Installer les paquets indispensables à la vie du serveur](/post-install/system/packages)
     - [Configuration `SSH`](#)
     - [XXXXX](#)
 
