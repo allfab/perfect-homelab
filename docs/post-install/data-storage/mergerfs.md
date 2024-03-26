@@ -138,59 +138,73 @@ mount /dev/sdd1 /mnt/disk2
 mkdir /mnt/storage
 ```
 
-### Entrées FSTAB
+#### Entrées FSTAB
 
 Ensuite, nous devons créer une entrée dans `/etc/fstab`. Ce fichier indique à votre système d'exploitation comment, où et quels disques monter.  Cela semble un peu complexe mais une entrée fstab est en fait assez simple et se décompose en :
 
 - `device` > `mountpoint` > `filesystem` > `options` > `dump` >`fsck` - documentation fstab.
 
-#### Via l'ID des disques durs
+##### Via l'ID des disques durs
 
 ``` shell
 #/etc/fstab
 
-/dev/disk/by-id/ata-VBOX_HARDDISK_VB0e6c06d6-e8cfeb66-part1 /mnt/parity  ext4 defaults 0 0
-/dev/disk/by-id/ata-VBOX_HARDDISK_VB8156f647-895029ce-part1 /mnt/disk1   ext4 defaults 0 0
-/dev/disk/by-id/ata-VBOX_HARDDISK_VBc37019e7-f48bd93f-part1 /mnt/disk2   ext4 defaults 0 0
+/dev/disk/by-id/ata-VBOX_HARDDISK_VB0e6c06d6-e8cfeb66-part1 /mnt/parity ext4 defaults 0 0
+/dev/disk/by-id/ata-VBOX_HARDDISK_VB8156f647-895029ce-part1 /mnt/disk1 ext4 defaults 0 0
+/dev/disk/by-id/ata-VBOX_HARDDISK_VBc37019e7-f48bd93f-part1 /mnt/disk2 ext4 defaults 0 0
 
 # Notez que mergerfs ne monte pas le lecteur de parité, il monte uniquement /mnt/disk*.
 # Mergerfs n'a rien à voir avec la parité, pour cela, nous utilisons SnapRAID.
-/mnt/disk* /mnt/storage fuse.mergerfs defaults,nonempty,allow_other,use_ino,cache.files=off,moveonenospc=true,dropcacheonclose=true,minfreespace=5G,fsname=mergerfs 0 0
+/mnt/disk* /mnt/storage fuse.mergerfs defaults,nonempty,cache.files=off,category.create=epmfs,moveonenospc=true,dropcacheonclose=true,minfreespace=5G,fsname=mergerfs 0 0
 
 ```
 
-#### Via l'UUID des disques durs
+##### Via l'UUID des disques durs
 
 ``` shell
 #/etc/fstab
 
-UUID="d82fb001-61b0-4051-836c-d8ed0bf4c613" /mnt/parity  ext4 defaults 0 0
-UUID="6b7d93a0-e894-49ff-a7db-d8bfa1a57645" /mnt/disk1   ext4 defaults 0 0
-UUID="471e82a7-a963-4bbb-b144-6eb3101390a0" /mnt/disk2   ext4 defaults 0 0
+UUID="d82fb001-61b0-4051-836c-d8ed0bf4c613" /mnt/parity ext4 defaults 0 0
+UUID="6b7d93a0-e894-49ff-a7db-d8bfa1a57645" /mnt/disk1 ext4 defaults 0 0
+UUID="471e82a7-a963-4bbb-b144-6eb3101390a0" /mnt/disk2 ext4 defaults 0 0
 
 # Notez que mergerfs ne monte pas le lecteur de parité, il monte uniquement /mnt/disk*.
 # Mergerfs n'a rien à voir avec la parité, pour cela, nous utilisons SnapRAID.
-/mnt/disk* /mnt/storage fuse.mergerfs defaults,nonempty,allow_other,use_ino,cache.files=off,moveonenospc=true,dropcacheonclose=true,minfreespace=5G,fsname=mergerfs 0 0
+/mnt/disk* /mnt/storage fuse.mergerfs defaults,nonempty,cache.files=off,category.create=epmfs,moveonenospc=true,dropcacheonclose=true,minfreespace=5G,fsname=mergerfs 0 0
 ```
 
-#### Options de montage de mergerfs
+##### Options de montage de mergerfs
+
+La documentation : [https://github.com/trapexit/mergerfs?tab=readme-ov-file#options](https://github.com/trapexit/mergerfs?tab=readme-ov-file#options) et le rappel de [la politique de stockage utilisée](/tech-stack/processus/#mergerfs)
 
 - **minfreespace = SIZE** :
 	- valeur d'espace minimale utilisée pour les stratégies de création. Peut être remplacé par une option spécifique à la branche. Comprend « K », « M » et « G » comme représentant respectivement le kilo-octet, le mégaoctet et le gigaoctet. (par défaut : 4G)
 - **moveonenospc = BOOL|POLICY** : 
 	- Lorsqu'elle est activée si une écriture échoue avec ENOSPC (aucun espace disponible sur l'appareil) ou EDQUOT (quota de disque dépassé), la stratégie sélectionnée s'exécutera pour trouver un nouvel emplacement pour le fichier. Une tentative de déplacement du fichier vers cette branche se produira (en gardant toutes les métadonnées possibles) et en cas de succès, l'original sera dissocié et l'écriture sera réessayée. (par défaut : faux, vrai = mfs)
+- **dropcacheonclose = BOOL** :
+    - Lorsqu'il est demandé de fermer un fichier, appelez d'abord posix_fadvise pour indiquer au noyau que nous n'avons plus besoin des données et qu'il peut supprimer son cache. Recommandé lorsque cache.files=partial|full|auto-full|per-process pour limiter la double mise en cache. (par défaut : faux)
+- **category.action = POLICY** :
+    - Définit la politique de toutes les fonctions FUSE dans la catégorie d'action. (par défaut : epall)
+- **category.create = POLICY** :
+    - Définit la politique de toutes les fonctions FUSE dans la catégorie de création. (par défaut : epmfs)
+- **category.search = POLICY** :
+    - Définit la politique de toutes les fonctions FUSE dans la catégorie de recherche. (par défaut : ff)
+- **cache.files = libfuse|off|partial|full|auto-full|per-process** :
+    - Mode de mise en cache des pages de fichiers (par défaut : libfuse)
+- **fsname = STR** :
+    - Définit le nom du système de fichiers tel qu'il apparaît dans mount, df, etc. La valeur par défaut est une liste des chemins sources concaténés avec le préfixe commun le plus long supprimé.
 
 Afin de recharger les nouvelles entrées `fstab` que nous avons créées et de les vérifier avant de redémarrer, montons-les
 ``` shell
 sudo mount -a
 ```
 
-Vérifiez ensuite les points de montage avec `df -h` ou enocre `duf' :
+Vérifiez ensuite les points de montage avec `df -h` ou enocre `duf` :
 ``` shell
 output
 ```
 
-#### Exemple d'arborescence des fichiers
+### Exemple d'arborescence des fichiers
 
 ``` shell
 root@homelab:/# tree /mnt/disk1

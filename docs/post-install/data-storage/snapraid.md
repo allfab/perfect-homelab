@@ -62,7 +62,7 @@ Probability that at least one disk is going to fail in the next year is 0%.
 
 ## Configuration
 
-réation du fichier de configuration `/etc/snapraid.conf` :
+Création du fichier de configuration `/etc/snapraid.conf` :
 ``` shell
 # PRÉREQUIS
 root@homelab:/# mkdir /var/snapraid
@@ -76,8 +76,8 @@ root@homelab:/# vi /etc/snapraid.conf
 
 # Content file location(s)
 content /var/snapraid.content
-content /mnt/disk1/.snapraid.content
-content /mnt/disk2/.snapraid.content
+content /mnt/disk1/snapraid.content
+content /mnt/disk2/snapraid.content
 
 # Data disks
 data d1 /mnt/disk1
@@ -101,8 +101,10 @@ exclude .TemporaryItems
 exclude .Trashes
 exclude .AppleDB
 exclude .nfo
+```
 
-
+On peut vérifier le status de Snapraid après la création du fichier de configuration :
+``` Shell
 root@homelab:/# snapraid status
 Self test...
 Loading state from /var/snapraid/.snapraid.content...
