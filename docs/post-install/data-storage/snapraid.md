@@ -72,7 +72,7 @@ root@homelab:/# vi /etc/snapraid.conf
 
 # SnapRAID configuration file
 # Parity location(s)
-1-parity /mnt/parity/snapraid.parity
+parity /mnt/parity/snapraid.parity
 
 # Content file location(s)
 content /var/snapraid.content
