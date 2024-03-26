@@ -365,17 +365,17 @@ root@homelab:~#
 ### Exemple d'arborescence des fichiers
 
 ``` shell
-root@homelab:/# tree /mnt/disk1
+root@homelab:/# tree /mnt/data01
 
-/mnt/disk1/
+/mnt/data01/
 ├── lost+found
 └── media
     ├── musics
     ├── photos
     └── videos
 
-root@homelab:/# tree /mnt/disk2
-/mnt/disk2
+root@homelab:/# tree /mnt/data02
+/mnt/data02
 ├── backups
 │   └── proxmox
 ├── docker
