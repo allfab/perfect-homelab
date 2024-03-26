@@ -205,7 +205,7 @@ host = smtp.gmail.com
 port = 587
 ssl = false
 tls = true
-user = allfab@gmail.com
+user = me@gmail.com
 # generate an app specific password : https://support.google.com/accounts/answer/185833?hl=en 
 password = password
 
