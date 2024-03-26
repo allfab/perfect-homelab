@@ -120,8 +120,8 @@ SnapRAID status report:
 
    Files Fragmented Excess  Wasted  Used    Free  Use Name
             Files  Fragments  GB      GB      GB
-       0       0       0     0.0       0       -   -  d1
-       0       0       0     0.0       0       -   -  d2
+       0       0       0     0.0       0       -   -  data01
+       0       0       0     0.0       0       -   -  data02
  --------------------------------------------------------------------------
        0       0       0     0.0       0       0   0%
 
@@ -240,7 +240,7 @@ Enfin, on crée une tâche cron pour exécuter automatiquement `snapraid-runner`
 ``` shell
 root@homelab:/# crontab -e
 
-00 01 * * * python3 /opt/snapraid-runner/snapraid-runner.py -c /opt/snapraid-runner/snapraid-runner.conf && curl -fsS --retry 3 https://hc-ping.com/123-1103-xyz-abc-123 > /dev/null
+00 01 * * * python3 /opt/snapraid-runner/snapraid-runner.py -c /opt/snapraid-runner/snapraid-runner.conf && curl -fsS --retry 3 https://healthchecks.allfabox.fr/path > /dev/null
 ```
 
 Lors d'une synchronisation, SnapRAID écrira un fichier .content dans `/var/snapraid` et nécessitera donc un accès en écriture à ce répertoire. L'exécution via sudo ou en tant que root est ici une solution simple et fiable.
