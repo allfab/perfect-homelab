@@ -295,12 +295,23 @@ root@homelab:~#  zfs set recordsize=128k rpool/pgdata
 - Configuration système :
 ``` shell
 # On notifie à Linux de ne pas utiliser le swap sauf en cas d'absolue nécessité
-root@homelab:~#  sysctl -w vm.swappiness=1          
-# Ajoutez 'vm.swappiness=1' à systctl.conf pour un effet permanent                                
-root@homelab:~#  echo 'vm.swappiness=1' | tee -a /etc/sysctl.conf                    
+root@homelab:~#  sysctl -w vm.swappiness=1
+# Ajoutez 'vm.swappiness=1' à systctl.conf pour un effet permanent  
+root@homelab:~#  echo 'vm.swappiness=1' | tee -a /etc/sysctl.conf
 ```
 
 - Gestion des droits entre l'host Proxmox et le container LXC sur lequel les données vont être montées :
+
+Référence : [https://www.itsembedded.com/sysadmin/proxmox_bind_unprivileged_lxc/](https://www.itsembedded.com/sysadmin/proxmox_bind_unprivileged_lxc/)
+
 ``` shell
-root@homelab:~#  chown -Rf 10000:10000 /var/lib/postgresql             
+root@homelab:~#  chown -Rf 10000:10000 /var/lib/postgresql
+```
+
+- Ajout du point de montage sur le container LXC après l'installation de PotgreSQL sur le container (penser à stopper le service postgres):
+
+`pct set <ID> -mp0 /host/dir,mp=/container/mount/point`
+
+``` shell
+root@homelab:~#  pct set 101 -mp0 /var/lib/postgresql,mp=/var/lib/postgresql
 ```
