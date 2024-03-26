@@ -25,13 +25,14 @@ Principalement destiné aux centres multimédia domestiques avec des fichiers vo
 
  # ces étapes supposent une installation Docker valide et fonctionnelle
 ``` shell
-wget https://github.com/amadvance/snapraid/releases/download/v12.3/snapraid-12.3.tar.gz
-tar xvf snapraid-*.tar.gz
-cd snapraid-*
-./configure
-make
-make check
-sudo make install
+root@homelab:/# wget https://github.com/amadvance/snapraid/releases/download/v12.3/snapraid-12.3.tar.gz
+root@homelab:/# tar xvf snapraid-12.3.tar.gz
+root@homelab:/# cd snapraid-12.3
+root@homelab:/# apt install build-essential
+root@homelab:/# ./configure
+root@homelab:/# make
+root@homelab:/# make check
+root@homelab:/# make install
 ```
 
 Vérifiez l'installation réussie avec :
@@ -40,19 +41,19 @@ root@homelab:/# snapraid --version
 ```
 
 ``` shell
-$ root@homelab:/# snapraid smart
+root@homelab:~# snapraid smart
 
 SnapRAID SMART report:
 
    Temp  Power   Error   FP Size
       C OnDays   Count        TB  Serial               Device    Disk
  -----------------------------------------------------------------------
-      -      -       -    -  0.0  VBc37019e7-f48bd93f  /dev/sdd  -
-      -      -       -  n/a    -  -                    /dev/sde  -
-      -      -       -    -  0.0  VB142e38f1-07018a97  /dev/sdb  -
-      -      -       -    -  0.0  VB0e6c06d6-e8cfeb66  /dev/sdf  -
-      -      -       -    -  0.0  VB8156f647-895029ce  /dev/sdc  -
-      -      -       -    -  0.0  VBd585156f-7c670e40  /dev/sda  -
+      -      -       -    -  2.2  VB2ff4aa6e-3b5752ba  /dev/sdd  -
+      -      -       -    -  2.2  VBbc16d229-98501233  /dev/sde  -
+      -      -       -  SSD  1.1  VB4fd111ed-7ccb2978  /dev/sdb  -
+      -      -       -    -  2.2  VB41f1fa4d-a2c11c14  /dev/sdf  -
+      -      -       -    -  0.1  VBb598f427-91b62771  /dev/sdc  -
+      -      -       -  SSD  1.1  VB4d776a0a-b24c3eb0  /dev/sda  -
 
 The FP column is the estimated probability (in percentage) that the disk
 is going to fail in the next year.
@@ -76,12 +77,12 @@ parity /mnt/parity/snapraid.parity
 
 # Content file location(s)
 content /var/snapraid.content
-content /mnt/disk1/snapraid.content
-content /mnt/disk2/snapraid.content
+content /mnt/data01/snapraid.content
+content /mnt/data02/snapraid.content
 
 # Data disks
-data d1 /mnt/disk1
-data d2 /mnt/disk2
+data data01 /mnt/data01
+data data02 /mnt/data02
 
 # Excludes hidden files and directories
 exclude *.unrecoverable
@@ -105,13 +106,14 @@ exclude .nfo
 
 On peut vérifier le status de Snapraid après la création du fichier de configuration :
 ``` Shell
-root@homelab:/# snapraid status
+root@homelab:~# snapraid status
+
 Self test...
-Loading state from /var/snapraid/.snapraid.content...
-WARNING! Content file '/var/snapraid/.snapraid.content' not found, attempting with another copy...
-Loading state from /mnt/disk1/.snapraid.content...
-WARNING! Content file '/mnt/disk1/.snapraid.content' not found, attempting with another copy...
-Loading state from /mnt/disk2/.snapraid.content...
+Loading state from /var/snapraid.content...
+WARNING! Content file '/var/snapraid.content' not found, attempting with another copy...
+Loading state from /mnt/data01/snapraid.content...
+WARNING! Content file '/mnt/data01/snapraid.content' not found, attempting with another copy...
+Loading state from /mnt/data02/snapraid.content...
 No content file found. Assuming empty.
 Using 0 MiB of memory for the file-system.
 SnapRAID status report:
@@ -129,14 +131,14 @@ The array is empty.
 
 À ce stade, on est prêt à lancer la commande `snapraid sync` pour créer les informations de parité :
 ``` shell
-root@homelab:/# snapraid sync
+root@homelab:~# snapraid sync
 
 Self test...
-Loading state from /var/snapraid/.snapraid.content...
-WARNING! Content file '/var/snapraid/.snapraid.content' not found, attempting with another copy...
-Loading state from /mnt/disk1/.snapraid.content...
-WARNING! Content file '/mnt/disk1/.snapraid.content' not found, attempting with another copy...
-Loading state from /mnt/disk2/.snapraid.content...
+Loading state from /var/snapraid.content...
+WARNING! Content file '/var/snapraid.content' not found, attempting with another copy...
+Loading state from /mnt/data01/snapraid.content...
+WARNING! Content file '/mnt/data01/snapraid.content' not found, attempting with another copy...
+Loading state from /mnt/data02/snapraid.content...
 No content file found. Assuming empty.
 Scanning...
 Scanned d1 in 0 seconds
@@ -144,13 +146,13 @@ Scanned d2 in 0 seconds
 Using 0 MiB of memory for the file-system.
 Initializing...
 Resizing...
-Saving state to /var/snapraid/.snapraid.content...
-Saving state to /mnt/disk1/.snapraid.content...
-Saving state to /mnt/disk2/.snapraid.content...
+Saving state to /var/snapraid.content...
+Saving state to /mnt/data01/snapraid.content...
+Saving state to /mnt/data02/snapraid.content...
 Verifying...
-Verified /var/snapraid/.snapraid.content in 0 seconds
-Verified /mnt/disk1/.snapraid.content in 0 seconds
-Verified /mnt/disk2/.snapraid.content in 0 seconds
+Verified /var/snapraid.content in 0 seconds
+Verified /mnt/data01/snapraid.content in 0 seconds
+Verified /mnt/data02/snapraid.content in 0 seconds
 Nothing to do
 ```
 
