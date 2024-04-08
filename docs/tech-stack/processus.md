@@ -68,11 +68,3 @@ Il en existe [une bonne liste](https://github.com/trapexit/mergerfs?tab=readme-o
     Si le répertoire n'existe sur aucun disque (par exemple, lors de l'ajout d'une nouvelle émission de télévision ou d'une nouvelle saison), l'annuaire sera créé sur le disque avec l'espace le plus important. Cela aide à équilibrer l'utilisation globale du stockage à travers les disques.
 
 La politique `epmfs` combine le meilleur des deux options. Il maintient les fichiers connexes ensemble pour plus de clarté, tout en veillant à ce que l'espace disque soit utilisé efficacement, et c'est donc ce que je vais utiliser sur mon pool de données MergerFS.
-
-
-### :material-backup-restore: [SnapRAID](http://www.snapraid.it/)
-
-
-### NFS
-
-## **Services** : VMs et/ou containers LXC + containers Docker.
