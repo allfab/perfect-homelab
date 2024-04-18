@@ -1,5 +1,4 @@
 ---
-version: "3.9"
 services:
   perfect-homelab:
     container_name: perfect-homelab
@@ -12,13 +11,19 @@ services:
     environment:
       TZ:  Europe/Paris
     networks:
-      - mkdocs
+      - material-mkdocs
 
+# CREATION DU NETWORK material-mkdocs :
+# docker network create --driver=bridge --subnet=172.20.0.0/16 --gateway=172.20.0.1 material-mkdocs
 networks:
-  mkdocs:
-    name: mkdocs
-    driver: bridge
-    ipam:
-      config:
-        - subnet: "172.24.0.0/16"
-          gateway: "172.24.0.1"
+  material-mkdocs:
+    external: true
+
+# networks:
+#   material-mkdocs:
+#     name: material-mkdocs
+#     driver: bridge
+#     ipam:
+#       config:
+#         - subnet: "172.20.0.0/16"
+#           gateway: "172.20.0.1"

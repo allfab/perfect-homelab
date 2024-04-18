@@ -25,19 +25,20 @@ theme:
         icon: material/weather-sunny
         name: Passer en mode clair
   font:
-    code: Mooli
+    text: Encode Sans
+    code: Source Code Pro
   features:
     - navigation.instant
     - navigation.instant.prefetch
     - navigation.sections # prevents collapsible sections
     - navigation.indexes # section index pages
     - navigation.expand #expands sections by default
-    #- navigation.tabs # section tabs along the top
+    # - navigation.tabs # section tabs along the top
     - navigation.top
     - toc.follow
-    - toc.integrate # moves toc to the left
-    #- content.action.edit
-    #- content.action.view
+    # - toc.integrate # moves toc to the left
+    # - content.action.edit
+    # - content.action.view
     - content.code.annotate
     - content.code.copy
     # - content.code.select
