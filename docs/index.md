@@ -1,3 +1,16 @@
+---
+title: BIENVENUE SUR PERFECT NAS SERVER
+date: 2024-01-15
+description: Retrouvez ici toute la documentation produite dans le cadre de la création de mon NAS/Homelab
+# template: home.html
+search:
+    exclude: true
+hide:
+    # - navigation
+    # - footer
+    # - toc
+---
+
 # **BIENVENUE SUR PERFECT NAS SERVER**
 ![logo-light](assets/images/overview/logo.png#only-light)
 ![logo-dark](assets/images/overview/logo-dark.png#only-dark)

@@ -1,7 +1,7 @@
 ---
 services:
-  perfect-homelab:
-    container_name: perfect-homelab
+  material-mkdocs-perfect-homelab:
+    container_name: material-mkdocs-perfect-homelab
     build: .
     restart: unless-stopped
     ports:

@@ -1,14 +1,24 @@
+---
+# INFORMATION SUR LE PROJET
 site_name: PERFECT HOMELAB
+site_description: Retrouvez ici toute la documentation produite dans le cadre de la création de mon NAS/Homelab.
+site_author: Fabien ALLAMANCHE
 site_url: https://perfecthomelab.allfabox.fr/
-repo_url: https://github.com/allfab/perfect-homelab.git
-repo_name: allfab/perfect-homelab
-#edit_uri: edit/main/docs/
+copyright: 2024 &copy; Allfab Studio
 
+# DÉPÔT
+repo_name: allfab/perfect-homelab
+repo_url: https://github.com/allfab/perfect-homelab.git
+edit_uri: edit/main/docs/
+
+# STRUCTURE DE DOSSIER PERSONNALISÉE
+docs_dir: ./docs
 theme:
   name: material
   language: fr
-  favicon: assets/images/favicon.png
+  # custom_dir: theme
   logo: assets/images/favicon.png
+  favicon: assets/images/favicon.png
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -19,7 +29,7 @@ theme:
         name: Passer en mode sombre
     # Palette toggle for dark mode
     - scheme: slate
-      accent: green
+      accent: orange
       primary: custom
       toggle:
         icon: material/weather-sunny
@@ -35,6 +45,7 @@ theme:
     - navigation.expand #expands sections by default
     # - navigation.tabs # section tabs along the top
     - navigation.top
+    - navigation.footer
     - toc.follow
     # - toc.integrate # moves toc to the left
     # - content.action.edit
@@ -44,22 +55,97 @@ theme:
     # - content.code.select
     - content.tabs.link
     - content.tooltips
+    # - header.autohide
 
-markdown_extensions: 
-  - admonition # enables coloured blocks mid article
-  - attr_list # improves image handling
-  - md_in_html # grids (insiders)
+# PERSONNALISATION  
+extra:
+  social:    
+    - icon: "fontawesome/solid/rss"
+      link: "https://geotribu.fr/feed_rss_created.xml"
+      name: "S'abonner aux nouveaux contenus via RSS"
+    - icon: "fontawesome/brands/github-alt"
+      link: "https://github.com/vienne-condrieu-agglomeration/"
+      name: "L'organisation Github du service SIG de Vienne Condrieu Agglomération"
+    - icon: fontawesome/brands/mastodon 
+      link: https://mapstodon.space/@allfab
+      name: "Allfab sur Mapstodon"
+    - icon: "fontawesome/brands/linkedin"
+      link: "https://www.linkedin.com/search/results/all/?keywords=vienne%20condrieu%20agglomeration"
+      name: "Les contenus de Vienne Condrieu Agglomération sur LinkedIn"
+    - icon: "fontawesome/brands/youtube"
+      link: https://www.youtube.com/@viennecondrieuagglomeratio8501
+      name: "Chaîne Youtube de Vienne Condrieu Agglomération"
+    - icon: "fontawesome/brands/facebook"
+      link: "https://www.facebook.com/VienneCondrieuAgglomeration"
+      name: "Page Facebook de Vienne Condrieu Agglomération"
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:<igeo@vienne-condrieu-aggloemration.fr>
+      name: "Nous contacter"
+  # Cookie consent
+  consent:
+    title: Consentement 🍪
+    actions:
+      - accept
+      - reject
+    description: >- 
+      Nous utilisons des cookies pour reconnaître vos visites et préférences répétées,
+      ainsi que pour mesurer l'efficacité de notre documentation et si les utilisateurs
+      trouvent ce qu'ils recherchent. Avec votre consentement, vous nous aidez
+      à améliorer notre documentation.
+
+extra_css:
+  - extra/stylesheets/extra.css
+  # - extra/stylesheets/mermaid-base.css
+
+# PLUGINS
+plugins:
+  - search:
+      lang: fr
+  # - autolinks
+  - awesome-pages
+  - open-in-new-tab
+  - glightbox
+  - mermaid2
+  - tags:
+      tags_file: tags.md
+  # - minify:
+  #     minify_css: true
+  #     css_files:
+  #       - assets/stylesheets/extra.css
+  #       - assets/stylesheets/home.css
+
+# EXTENSIONS POUR AMÉLIORER markdown - https://squidfunk.github.io/mkdocs-material/getting-started/#extensions
+markdown_extensions:
+  - abbr
+  # Admonition - https://squidfunk.github.io/mkdocs-material/extensions/admonition/
+  - admonition
+  - attr_list
+  # Footnotes - https://squidfunk.github.io/mkdocs-material/reference/footnotes/
+  - footnotes
+  - md_in_html
+  # Metadata - https://squidfunk.github.io/mkdocs-material/extensions/metadata
+  - meta
+  # PyMdown extensions - https://squidfunk.github.io/mkdocs-material/extensions/pymdown/
+  - pymdownx.details
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.critic
-  - pymdownx.caret
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      use_pygments: true
+  - pymdownx.inlinehilite
   - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.tilde
-  - def_list
-  - pymdownx.tasklist:
-      custom_checkbox: true
+  - pymdownx.smartsymbols
+  - pymdownx.saneheaders
+  # https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
+  # - pymdownx.snippets:
+  #     auto_append: [content/toc_nav_ignored/snippets/glossaire.md]
+  #     base_path:
+  #       - "."
+  #     check_paths: true
+  #     url_download: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -67,23 +153,15 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
-  - footnotes
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-
-plugins:
-  - search
-  - glightbox
-  - open-in-new-tab
-  - mermaid2
-
-extra_css:
-  - extra/stylesheets/extra.css
-  #- extra/stylesheets/mermaid-base.css
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  # Permalinks - https://squidfunk.github.io/mkdocs-material/extensions/permalinks/
+  - toc:
+      permalink: "#"
 
 nav:
   - 1. Introduction:
@@ -121,11 +199,5 @@ nav:
       - "wiki/docker/index.md"
     - GIT:
       - "wiki/git/index.md"
-
-extra:
-  social:
-    - icon: 'fontawesome/brands/mastodon'
-      link: 'https://mapstodon.space/@allfab'
-      name: Allfab sur Mastodon
-      
-copyright: 2024 &copy; Allfab Studio - Licensed under GPLv3
+  - Tags:
+    - "tags.md"
