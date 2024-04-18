@@ -22,8 +22,6 @@ Les principales technologies que je vous recommande sont :
 - la conteneurisation applicative via [docker](https://www.docker.com/) et gérées à l'aide de [docker-compose](https://docs.docker.com/compose/),
 - [Proxmox](https://www.proxmox.com/en/), [mergerfs](https://github.com/trapexit/mergerfs/), [SnapRAID](http://www.snapraid.it/) et [ZFS](https://zfsonlinux.org/).
 
-To contribute, open a PR, and I will review it. Gratefully received!
-pms-wiki/README.md at main · ironicbadger/pms-wiki
 
-# Contribuer
+## Contribuer
 Pour contribuer, ouvrez un [PR](https://github.com/allfab/perfect-homelab/pulls) !
