@@ -20,19 +20,19 @@ vi /etc/network/interface
 
 Par example :
 ``` shell
-enp3s0
+enp2s0
 ```
 
 ## Activer le démarrage/réveil sur LAN temporairement
 
 ``` shell
-sudo ethtool --change enp3s0 wol g
+sudo ethtool --change enp2s0 wol g
 ```
 
 ## Vérifiez l'état WOL de l'interface avec la commande suivante
 
 ``` shell
-sudo ethtool enp3s0
+sudo ethtool enp2s0
 ```
 
 ## Retrouvez la section ci-dessous
@@ -59,7 +59,7 @@ Description=Enable Wake On Lan
 
 [Service]
 Type=oneshot
-ExecStart = /usr/sbin/ethtool --change enp3s0 wol g
+ExecStart = /usr/sbin/ethtool --change enp2s0 wol g
 
 [Install]
 WantedBy=basic.target
