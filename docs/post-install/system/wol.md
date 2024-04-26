@@ -1,3 +1,8 @@
+---
+title: Post-Installation - WOL
+icon: material/alarm
+---
+
 # Activer Wake On LAN sur Debian
 
 ## Installation d'`ethtool`
