@@ -1,0 +1,269 @@
+%!Adobe-FontList 1.14
+%Locale:0x40c
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-Bold
+FamilyName:Josefin Sans
+StyleName:Bold
+FullName:Josefin Sans Bold
+MenuName:Josefin Sans
+StyleBits:2
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-Bold.ttf
+DataFormat:sfntData
+FileLength:59760
+FileModTime:1692985884
+WeightClass:700
+WidthClass:5
+AngleClass:0
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-BoldItalic
+FamilyName:Josefin Sans
+StyleName:Bold Italic
+FullName:Josefin Sans Bold Italic
+MenuName:Josefin Sans
+StyleBits:3
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-BoldItalic.ttf
+DataFormat:sfntData
+FileLength:63608
+FileModTime:1692985884
+WeightClass:700
+WidthClass:5
+AngleClass:1
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-ExtraLight
+FamilyName:Josefin Sans
+StyleName:ExtraLight
+FullName:Josefin Sans ExtraLight
+MenuName:Josefin Sans ExtraLight
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-ExtraLight.ttf
+DataFormat:sfntData
+FileLength:59832
+FileModTime:1692985884
+WeightClass:250
+WidthClass:5
+AngleClass:0
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-ExtraLightItalic
+FamilyName:Josefin Sans
+StyleName:ExtraLight Italic
+FullName:Josefin Sans ExtraLight Italic
+MenuName:Josefin Sans ExtraLight
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-ExtraLightItalic.ttf
+DataFormat:sfntData
+FileLength:63712
+FileModTime:1692985884
+WeightClass:250
+WidthClass:5
+AngleClass:1
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-ThinItalic
+FamilyName:Josefin Sans
+StyleName:Thin Italic
+FullName:Josefin Sans Thin Italic
+MenuName:Josefin Sans Thin
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-Italic-VariableFont_wght.ttf
+DataFormat:sfntData
+FileLength:125560
+FileModTime:1692985884
+WeightClass:100
+WidthClass:5
+AngleClass:1
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-Italic
+FamilyName:Josefin Sans
+StyleName:Italic
+FullName:Josefin Sans Italic
+MenuName:Josefin Sans
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-Italic.ttf
+DataFormat:sfntData
+FileLength:63712
+FileModTime:1692985884
+WeightClass:400
+WidthClass:5
+AngleClass:1
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-Light
+FamilyName:Josefin Sans
+StyleName:Light
+FullName:Josefin Sans Light
+MenuName:Josefin Sans Light
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-Light.ttf
+DataFormat:sfntData
+FileLength:59868
+FileModTime:1692985884
+WeightClass:300
+WidthClass:5
+AngleClass:0
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-LightItalic
+FamilyName:Josefin Sans
+StyleName:Light Italic
+FullName:Josefin Sans Light Italic
+MenuName:Josefin Sans Light
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-LightItalic.ttf
+DataFormat:sfntData
+FileLength:63692
+FileModTime:1692985884
+WeightClass:300
+WidthClass:5
+AngleClass:1
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-Medium
+FamilyName:Josefin Sans
+StyleName:Medium
+FullName:Josefin Sans Medium
+MenuName:Josefin Sans Medium
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-Medium.ttf
+DataFormat:sfntData
+FileLength:59904
+FileModTime:1692985884
+WeightClass:500
+WidthClass:5
+AngleClass:0
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-MediumItalic
+FamilyName:Josefin Sans
+StyleName:Medium Italic
+FullName:Josefin Sans Medium Italic
+MenuName:Josefin Sans Medium
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-MediumItalic.ttf
+DataFormat:sfntData
+FileLength:63840
+FileModTime:1692985884
+WeightClass:500
+WidthClass:5
+AngleClass:1
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-Regular
+FamilyName:Josefin Sans
+StyleName:Regular
+FullName:Josefin Sans Regular
+MenuName:Josefin Sans
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-Regular.ttf
+DataFormat:sfntData
+FileLength:59880
+FileModTime:1692985884
+WeightClass:400
+WidthClass:5
+AngleClass:0
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-SemiBold
+FamilyName:Josefin Sans
+StyleName:SemiBold
+FullName:Josefin Sans SemiBold
+MenuName:Josefin Sans SemiBold
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-SemiBold.ttf
+DataFormat:sfntData
+FileLength:59896
+FileModTime:1692985884
+WeightClass:600
+WidthClass:5
+AngleClass:0
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-SemiBoldItalic
+FamilyName:Josefin Sans
+StyleName:SemiBold Italic
+FullName:Josefin Sans SemiBold Italic
+MenuName:Josefin Sans SemiBold
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-SemiBoldItalic.ttf
+DataFormat:sfntData
+FileLength:63844
+FileModTime:1692985884
+WeightClass:600
+WidthClass:5
+AngleClass:1
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:JosefinSans-Thin
+FamilyName:Josefin Sans
+StyleName:Thin
+FullName:Josefin Sans Thin
+MenuName:Josefin Sans Thin
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Users\fallamanche\Documents\Github\allfab\perfect-homelab\docs\assets\resources\illustrator\Font\JosefinSans-VariableFont_wght.ttf
+DataFormat:sfntData
+FileLength:117720
+FileModTime:1692985884
+WeightClass:100
+WidthClass:5
+AngleClass:0
+%EndFont
+
