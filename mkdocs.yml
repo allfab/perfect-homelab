@@ -189,7 +189,9 @@ nav:
   - 5. VMs/Conteneurs:
     - "services/index.md"
     - VMs: "services/vm.md"
-    - LXC: "services/lxc.md"
+    - LXC:
+      - "services/lxc.md"
+      - Conteneurs: "services/lxc/frontend.md"
     - Docker: "services/docker.md"
   - 99. Wiki:
     - Linux: 
