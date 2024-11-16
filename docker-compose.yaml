@@ -1,7 +1,7 @@
 ---
 services:
-  material-mkdocs-perfect-homelab:
-    container_name: material-mkdocs-perfect-homelab
+  perfect-homelab:
+    container_name: perfect-homelab
     build: .
     restart: unless-stopped
     ports:
@@ -11,18 +11,18 @@ services:
     environment:
       TZ:  Europe/Paris
     networks:
-      - material-mkdocs
+      - perfect-homelab
 
 # CREATION DU NETWORK material-mkdocs :
 # docker network create --driver=bridge --subnet=172.20.0.0/16 --gateway=172.20.0.1 material-mkdocs
-networks:
-  material-mkdocs:
-    external: true
-
 # networks:
-#   material-mkdocs:
-#     name: material-mkdocs
-#     driver: bridge
+  # material-mkdocs:
+     # external: true
+
+networks:
+  perfect-homelab:
+    name: perfect-homelab
+    driver: bridge
 #     ipam:
 #       config:
 #         - subnet: "172.20.0.0/16"
