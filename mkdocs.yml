@@ -89,7 +89,7 @@ extra:
 
 extra_css:
   - extra/stylesheets/extra.css
-  # - extra/stylesheets/mermaid-base.css
+  # - stylesheets/mermaid-base.css
 
 # PLUGINS
 plugins:
@@ -181,12 +181,12 @@ nav:
         - SnapRAID: "post-install/data-storage/snapraid.md"
         - NFS/Samba: "post-install/data-storage/nfs-samba.md"
   - 5. VMs/Conteneurs:
-    - "services/index.md"
-    - VMs: "services/vm.md"
     - LXC:
-      - "services/lxc.md"
-      - Conteneurs: "services/lxc/frontend.md"
-    - Docker: "services/docker.md"
+      - "services/lxc/index.md"
+      - Frontend: "services/lxc/frontend.md"
+    - Docker:
+      - "services/docker/index.md"
+      - frontend-stack: "services/docker/frontend-stack.md"
   - 99. Wiki:
     - Linux: 
       - "wiki/linux/index.md"
