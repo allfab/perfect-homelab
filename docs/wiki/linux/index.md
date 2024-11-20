@@ -20,7 +20,15 @@ tags:
 
     [:octicons-arrow-right-24: En savoir plus](#)
     
--   :material-server:{ .lg .middle } __02.Services & Serveurs__
+-   :material-console:{ .lg .middle } __02.Commandes de base__
+
+    ---
+
+    - [**LSBLK** : Lister les disques et les partitions du système](/wiki/linux/basics/lsblk)
+
+    [:octicons-arrow-right-24: En savoir plus](#)
+
+-   :material-server:{ .lg .middle } __03.Services & Serveurs__
 
     ---
 
