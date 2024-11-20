@@ -2,8 +2,8 @@
 title: Matériel
 icon: material/harddisk
 tags:
-    - hardware
-    - composants
+    - Hardware
+    - Composants
 ---
 
 # Matériel
