@@ -1,24 +1,17 @@
 ---
-title: Wiki - Linux - Sommaire
-icon: material/penguin
+title: WIKI - Linux - Services & Serveurs
+icon: material/server
 tags:
     - Wiki
     - Linux
+    - Services & Serveurs
 ---
 
-# Wiki - Linux - Sommaire
+# WIKI - Linux - Services & Serveurs
 
 ## Sommaire
 
 <div class="grid cards" markdown>
-
--   :material-linux:{ .lg .middle } __01.Généralités Système__
-
-    ---
-
-    - [LVM sous Linux](/wiki/linux/system/lvm)
-
-    [:octicons-arrow-right-24: En savoir plus](#)
     
 -   :material-server:{ .lg .middle } __02.Services & Serveurs__
 

@@ -1,11 +1,15 @@
 ---
-title: WIKI - Linux - Console
-icon: material/console
+title: WIKI - Linux - Services
+icon: material/ssh
+tags:
+    - Wiki
+    - Linux
+    - SSH
 ---
 
-# WIKI - Linux - Console
+# WIKI - Linux - Services
 
-# **Post-Installation - SSH**
+# **Configuration - SSH**
 
 ## **Génération d’une nouvelle clé SSH**
 
