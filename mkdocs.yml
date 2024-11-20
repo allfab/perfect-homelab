@@ -191,7 +191,7 @@ nav:
     - Linux: 
       - "wiki/linux/index.md"
       - 01.Généralités système: "wiki/linux/system.md"
-      - 02.Console: "wiki/linux/console.md"
+      - 02.Services & Serveurs: "wiki/linux/services_servers.md"
     - Docker:
       - "wiki/docker/index.md"
     - GIT:
