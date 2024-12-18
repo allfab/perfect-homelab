@@ -90,7 +90,199 @@ Référence : [https://pve.proxmox.com/wiki/Storage#_using_the_command_line_inte
 
 ## **:material-source-repository: Partitionner le reste de l'espace disque restant afin de créer le stockage LVM-Thin**
 
-Coming soon
+### Suppression du volume logique `data` et extension du volume logique `root` avec l'espace disque libéré
+
+Désactivation du volume logique `/dev/pve/data` et suppression du volume logique :
+```bash
+lvchange -an /dev/pve/data
+lvremove /dev/pve/data
+```
+
+Agrandir le volume logique `/dev/pve/root` avec l'espace disque libéré par la suppression du volume logique `/dev/pve/data`
+```bash
+lvextend -l +100%FREE /dev/pve/root
+```
+
+Il faut maintenant penser à agrandir le système de fichier du volume logique `/dev/pve/root`. 
+Vérification du système de fichier utilisé sur `/dev/pve/root` :
+```bash
+lsblk -o NAME,TYPE,MOUNTPOINT,FSTYPE,FSSIZE,SIZE,FSAVAIL
+
+NAME         TYPE MOUNTPOINT FSTYPE      FSSIZE  SIZE FSAVAIL
+sda          disk                                 60G 
+├─sda1       part                               1007K 
+├─sda2       part            vfat                512M 
+└─sda3       part            LVM2_member        59.5G 
+  ├─pve-swap lvm  [SWAP]     swap                  8G 
+  └─pve-root lvm  /          ext4         24.3G 51.5G   19.4G
+sdb          disk                                128G 
+```
+
+Le système de fichier `/dev/pve/root` est en `ext4`. On réalise l'agrandissement à chaud sans démonter le volume :
+```bash
+resize2fs /dev/pve/root
+```
+
+```bash
+lsblk -o NAME,TYPE,MOUNTPOINT,FSTYPE,FSSIZE,SIZE,FSAVAIL
+
+NAME         TYPE MOUNTPOINT FSTYPE      FSSIZE  SIZE FSAVAIL
+sda          disk                                 60G 
+├─sda1       part                               1007K 
+├─sda2       part            vfat                512M 
+└─sda3       part            LVM2_member        59.5G 
+  ├─pve-swap lvm  [SWAP]     swap                  8G 
+  └─pve-root lvm  /          ext4         50.5G 51.5G   44.6G
+sdb          disk                                128G 
+```
+
+
+### Création du volume logique `/dev/pve/data` sur un disque dur prévu à cet effet `/dev/sdb`
+
+Etat des lieux `LVM`:
+```bash
+pvdisplay
+
+--- Physical volume ---
+  PV Name               /dev/sda3
+  VG Name               pve
+  PV Size               <63.50 GiB / not usable 2.98 MiB
+  Allocatable           yes (but full)
+  PE Size               4.00 MiB
+  Total PE              16255
+  Free PE               0
+  Allocated PE          16255
+  PV UUID               QCTN2f-GNZR-TWsG-q8IR-3Jr0-ztd2-6fQjJ6
+```
+
+
+```bash
+vgdisplay 
+
+  --- Volume group ---
+  VG Name               pve
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  9
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                2
+  Open LV               2
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               <63.50 GiB
+  PE Size               4.00 MiB
+  Total PE              16255
+  Alloc PE / Size       16255 / <63.50 GiB
+  Free  PE / Size       0 / 0   
+  VG UUID               nQPS3U-LCV8-1K91-gM7K-j0W6-3aEx-92QrCt
+```
+
+
+```bash
+lvdisplay
+
+--- Logical volume ---
+  LV Path                /dev/pve/swap
+  LV Name                swap
+  VG Name                pve
+  LV UUID                bKPvlf-nqi2-jiNH-X4Fe-pkbO-P3Oo-Smto3f
+  LV Write Access        read/write
+  LV Creation host, time proxmox, 2024-12-18 14:35:01 +0100
+  LV Status              available
+  # open                 2
+  LV Size                8.00 GiB
+  Current LE             2048
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           252:0
+   
+  --- Logical volume ---
+  LV Path                /dev/pve/root
+  LV Name                root
+  VG Name                pve
+  LV UUID                CnnWlY-8tSq-H8Ec-eQVw-m8FM-lNU7-VIzr0J
+  LV Write Access        read/write
+  LV Creation host, time proxmox, 2024-12-18 14:35:01 +0100
+  LV Status              available
+  # open                 1
+  LV Size                <55.50 GiB
+  Current LE             14207
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           252:1
+```
+
+Agrandissement du groupe de volume `pve` avec la partition `/dev/sdb1` du disque dur `/dev/sdb` :
+```bash
+lsblk -o NAME,TYPE,MOUNTPOINT,FSTYPE,FSSIZE,SIZE,FSAVAIL
+
+NAME         TYPE MOUNTPOINT FSTYPE      FSSIZE  SIZE FSAVAIL
+sda          disk                                 64G 
+├─sda1       part                               1007K 
+├─sda2       part            vfat                512M 
+└─sda3       part            LVM2_member        63.5G 
+  ├─pve-swap lvm  [SWAP]     swap                  8G 
+  └─pve-root lvm  /          ext4         54.4G 55.5G   48.2G
+sdb          disk                                128G 
+└─sdb1       part                                128G 
+
+```
+
+```bash
+vgextend pve /dev/sdb1
+Physical volume "/dev/sdb1" successfully created.
+  Volume group "pve" successfully extended
+
+vgdisplay
+--- Volume group ---
+  VG Name               pve
+  System ID             
+  Format                lvm2
+  Metadata Areas        2
+  Metadata Sequence No  10
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                2
+  Open LV               2
+  Max PV                0
+  Cur PV                2
+  Act PV                2
+  VG Size               191.49 GiB
+  PE Size               4.00 MiB
+  Total PE              49022
+  Alloc PE / Size       16255 / <63.50 GiB
+  Free  PE / Size       32767 / <128.00 GiB
+  VG UUID               nQPS3U-LCV8-1K91-gM7K-j0W6-3aEx-92QrCt
+```
+
+Création du volume logique `/dev/pve/data` de type `thin-pool` :
+```bash
+lvcreate -l 100%FREE --thin --name data pve
+
+Thin pool volume with chunk size 64.00 KiB can address at most <15.88 TiB of data.
+Logical volume "data" created.
+
+lvs
+  LV   VG  Attr       LSize    Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  data pve twi-a-tz-- <127.75g             0.00   10.42                           
+  root pve -wi-ao----  <55.50g                                                    
+  swap pve -wi-ao----    8.00g
+```
+
+Ajout du stockage de type LVM `thin-pool` dans Proxmox :
+```bash
+# add the storage in to Proxmox CV as an LVM Thin type named "local-lvm"
+pvesm add lvmthin local-lvm -vgname pve -thinpool data
+```
 
 ## **:material-usb-flash-drive: Stocker les images iso des VMS/CTs**
 
