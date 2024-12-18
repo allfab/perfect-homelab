@@ -90,7 +90,7 @@ Référence : [https://pve.proxmox.com/wiki/Storage#_using_the_command_line_inte
 
 ## Proxmox et LVM
 
-### De l'utilisation du volume logique `/dev/pve/data`
+### **De l'utilisation du volume logique `/dev/pve/data`**
 `
 Le programme d'installation crée un groupe de volumes (VG) appelé **pve** et des volumes logiques (LV) supplémentaires appelés **root, data et swap**. 
 
@@ -125,7 +125,7 @@ Remarque : LVM nécessite de l'espace libre dans le VG pour la création d'insta
     Ces opérations doivent être réalisées sur une installation initiale et avec précaution. À ne pas faire sur une installation de `Proxmox` en production.
 
 
-### **:material-source-repository: Suppression du volume logique `data` et extension du volume logique `root` avec l'espace disque libéré**
+### **Suppression du volume logique `data` et extension du volume logique `root` avec l'espace disque libéré**
 
 Désactivation du volume logique `/dev/pve/data` et suppression du volume logique :
 ```bash
@@ -172,7 +172,7 @@ sdb          disk                                128G
 ```
 
 
-### Création du volume logique `/dev/pve/data` sur un disque dur prévu à cet effet `/dev/sdb`
+### **Création du volume logique `/dev/pve/data` sur un disque dur prévu à cet effet `/dev/sdb`**
 
 Etat des lieux `LVM`:
 ```bash
