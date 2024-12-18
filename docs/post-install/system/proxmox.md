@@ -88,9 +88,44 @@ $ pvesm set local --disable 0
 
 Référence : [https://pve.proxmox.com/wiki/Storage#_using_the_command_line_interface](https://pve.proxmox.com/wiki/Storage#_using_the_command_line_interface)
 
-## **:material-source-repository: Partitionner le reste de l'espace disque restant afin de créer le stockage LVM-Thin**
+## Proxmox et LVM
 
-### Suppression du volume logique `data` et extension du volume logique `root` avec l'espace disque libéré
+### De l'utilisation du volume logique `/dev/pve/data`
+`
+Le programme d'installation crée un groupe de volumes (VG) appelé **pve** et des volumes logiques (LV) supplémentaires appelés **root, data et swap**. 
+
+Pour contrôler la taille de ces volumes, Proxmox utilise les options suivantes :
+
+`hdsize` : Définit la taille totale du disque dur à utiliser. De cette façon, vous pouvez réserver de l'espace libre sur le disque dur pour un partitionnement ultérieur (par exemple pour un PV et un VG supplémentaires sur le même disque dur pouvant être utilisés pour le stockage LVM).  
+
+`swapsize` : Définit la taille du volume de swap. La valeur par défaut est la taille de la mémoire installée, minimum 4 Go et maximum 8 Go. La valeur résultante ne peut pas être supérieure à hdsize/8. 
+
+Remarque : Si la valeur est 0, aucun volume d'échange ne sera créé. 
+
+`maxroot` : Définit la taille maximale du volume racine, qui stocke le système d'exploitation. La limite maximale de la taille du volume racine est hdsize/4.  
+
+`maxvz` : Définit la taille maximale du volume de données. La taille réelle du volume de données est :  `datasize = hdsize - rootsize - swapsize - minfree`
+  
+Où la taille des données ne peut pas être supérieure à maxvz.  
+
+!!! abstract "Note" 
+    Remarque : En cas de LVM Thin, le pool de données ne sera créé que si la taille des données est supérieure à 4 Go.  
+    Remarque : Si la valeur est 0, aucun volume de données ne sera créé et la configuration du stockage sera adaptée en conséquence.
+
+`minfree` :  
+Définit la quantité d'espace libre restant dans le groupe de volumes LVM **`pve`**.
+Avec plus de 128 Go de stockage disponible, la valeur par défaut est 16 Go, sinon hdsize/8 sera utilisé.  
+Remarque : LVM nécessite de l'espace libre dans le VG pour la création d'instantanés (non requis pour les instantanés lvmthin).
+
+!!! abstract "Note"
+    Avec cette configuration, on n'a pas totalement la main sur la taille des volumes logiques créés. La suite de cette documentation détaille comment supprimer le volume logique `/dev/pve/data` et de récupérer l'espace disque supplémentaire pour agrandir le volume logique `/dev/pve/root`.
+    Noter qur nous utiliserons un disque dur complémentaire afin de recréer un volume logique `/dev/pve/data`.
+
+!!! danger "Avertissement"
+    Ces opérations doivent être réalisées sur une installation initiale et avec précaution. À ne pas faire sur une installation de `Proxmox` en production.
+
+
+### **:material-source-repository: Suppression du volume logique `data` et extension du volume logique `root` avec l'espace disque libéré**
 
 Désactivation du volume logique `/dev/pve/data` et suppression du volume logique :
 ```bash
