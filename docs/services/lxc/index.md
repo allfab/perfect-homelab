@@ -28,14 +28,14 @@ flowchart LR
 
     subgraph **Conteneurs LXC**
         frontend{"__Frontend__<br/>Mémoire : __1GO__<br/>Swap : __1GO__<br/>Cores : __2__<br/>Disque : __16GO__"}
-        elephant{"__Elephant__<br/>Mémoire : __1GO__<br/>Swap : __1GO__<br/>Cores : __2__<br/>Disque : __16GO__"}
-        jellyfin{"__Jellyfin__<br/>Mémoire : __1GO__<br/>Swap : __1GO__<br/>Cores : __2__<br/>Disque : __16GO__"}
+        elephant{"__Elephant__<br/>Mémoire : __16GO__<br/>Swap : __1GO__<br/>Cores : __4__<br/>Disque : __128GO__"}
+        jellyfin{"__Jellyfin__<br/>Mémoire : __8GO__<br/>Swap : __4GO__<br/>Cores : __4__<br/>Disque : __32GO__"}
         mediaserver{"__Mediaserver__<br/>Mémoire : __1GO__<br/>Swap : __1GO__<br/>Cores : __2__<br/>Disque : __16GO__"}
-        nextcloud{"__Nextcloud__<br/>Mémoire : __1GO__<br/>Swap : __1GO__<br/>Cores : __2__<br/>Disque : __16GO__"}
-        immich{"__Immich__<br/>Mémoire : __1GO__<br/>Swap : __1GO__<br/>Cores : __2__<br/>Disque : __16GO__"}
-        webapps{"__Webapps__<br/>Mémoire : __1GO__<br/>Swap : __1GO__<br/>Cores : __2__<br/>Disque : __16GO__"}
-        sysadmin{"__Sysadmin__<br/>Mémoire : __1GO__<br/>Swap : __1GO__<br/>Cores : __2__<br/>Disque : __16GO__"}
-        communication{"__Communication__<br/>Mémoire : __1GO__<br/>Swap : __1GO__<br/>Cores : __2__<br/>Disque : __16GO__"}
+        nextcloud{"__Nextcloud__<br/>Mémoire : __4GO__<br/>Swap : __4GO__<br/>Cores : __2__<br/>Disque : __16GO__"}
+        immich{"__Immich__<br/>Mémoire : __8GO__<br/>Swap : __4GO__<br/>Cores : __4__<br/>Disque : __16GO__"}
+        webapps{"__Webapps__<br/>Mémoire : __1GO__<br/>Swap : __512MO__<br/>Cores : __2__<br/>Disque : __16GO__"}
+        sysadmin{"__Sysadmin__<br/>Mémoire : __1GO__<br/>Swap : __512MO__<br/>Cores : __2__<br/>Disque : __16GO__"}
+        communication{"__Communication__<br/>Mémoire : __512MO__<br/>Swap : __512MO__<br/>Cores : __2__<br/>Disque : __8GO__"}
     end
 
     subgraph **Conteneurs LXC**
