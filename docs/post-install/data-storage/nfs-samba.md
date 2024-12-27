@@ -48,7 +48,7 @@ Editer le fichier **_/etc/samba/smb.conf_** :
    valid users = docker
 ```
 
-## Créer un utilisateur et un groupe Samba
+### Créer un utilisateur et un groupe Samba
 
 Nous avons besoin du groupe d'utilisateurs de partage Samba pour accéder au partage privé comme spécifié dans la configuration ci-dessus. Nous allons donc créer le groupe comme ci-dessous.
 
@@ -90,7 +90,7 @@ Activez le compte créé :
 sudo smbpasswd -e sambauser
 ```
 
-## Vérifiez la configuration de Samba
+### Vérifiez la configuration de Samba
 
 Une fois les modifications apportées au fichier de configuration, il est recommandé de le tester à l'aide de la commande ci-dessous :
 ``` bash
@@ -102,7 +102,7 @@ Si vous n'avez pas de message d'erreur, on redémarre le service :
 sudo systemctl restart nmbd
 ```
 
-## Accéder aux partages depuis un client
+### Accéder aux partages depuis un client
 
 Ce guide montre comment accéder aux fichiers partagés à l'aide des systèmes Windows et Linux. Tout d’abord, essayez d’accéder au partage depuis votre ordinateur local.
 
