@@ -3,13 +3,11 @@ title: NFS/Samba
 icon: material/folder-network
 ---
 
-# **NFS**
+# **NFS/Samba**
 
-Coming soon
+## **Configurer un partage Samba**
 
-# **Configurer un partage Samba**
-
-## Installation de Samba
+### Installation de Samba
 ``` bash
 sudo apt install samba smbclient cifs-utils
 ```
@@ -110,7 +108,7 @@ Ce guide montre comment accéder aux fichiers partagés à l'aide des systèmes 
 smbclient '\\localhost\private' -U sambauser
 ```
 
-# Configurer le partage de fichier sur Freebox OS
+## Configurer le partage de fichier sur Freebox OS
 
 - Prérequis :
 	- Sur la console d'administration du routeur Freebox : http://mafreebox.freebox.fr/
