@@ -91,7 +91,7 @@ Référence : [https://pve.proxmox.com/wiki/Storage#_using_the_command_line_inte
 ## Proxmox et LVM
 
 ### **De l'utilisation du volume logique `/dev/pve/data`**
-`
+
 Le programme d'installation crée un groupe de volumes (VG) appelé **pve** et des volumes logiques (LV) supplémentaires appelés **root, data et swap**. 
 
 Pour contrôler la taille de ces volumes, Proxmox utilise les options suivantes :
