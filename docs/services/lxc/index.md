@@ -22,7 +22,9 @@ flowchart LR
     subgraph **Cluster Proxmox**
       morpheus("**Morpheus**<br/>PVE")
       style morpheus color:#ffffff,fill:none,stroke:#333,stroke-width:2px
-      neo("**Neo**<br/>PVE")
+      neo("**Neo**<br/>PVE + PBS")
+      neo-pve("**Neo**<br/>PVE:8006")
+      neo-pbs("**Neo**<br/>PBS:8007")
       style neo color:#ffffff,fill:none,stroke:#333,stroke-width:2px
     end
 
@@ -76,6 +78,8 @@ flowchart LR
 
     proxmox --> morpheus
     proxmox --> neo
+    neo --> neo-pve
+    neo --> neo-pbs
     morpheus --> frontend --> docker-frontend-stack
     morpheus --> elephant --> elephant-stack
     morpheus --> jellyfin --> docker-jellyfin-stack
@@ -85,7 +89,7 @@ flowchart LR
     morpheus --> webapps --> docker-webapps-stack
     morpheus --> sysadmin --> docker-sysadmin-stack
     morpheus --> communication --> docker-communication-stack
-    neo --> smarthome --> docker-smarthome-stack
+    neo-pve --> smarthome --> docker-smarthome-stack
 
     click frontend href "/services/lxc/frontend"
     click docker-frontend-stack href "/services/docker/frontend-stack"
